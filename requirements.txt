@@ -1,0 +1,6 @@
+transformers==4.31.0
+regex
+tensorboard
+datasets
+sentencepiece
+pytorch-lightning==2.1.0
