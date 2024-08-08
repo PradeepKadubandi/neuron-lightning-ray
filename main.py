@@ -21,15 +21,15 @@ import sys
 
 import torch
 import torch_xla.core.xla_model as xm
-from data_module import NeuronLightningDataModule
-from modeling_llama_nxd import (
+from lightning_data_module import NeuronLightningDataModule
+from llama_nxd_model import (
     CoreAttention,
     LlamaDecoderLayer,
     LlamaForCausalLM,
     LlamaRMSNorm,
     init_weights,
 )
-from module_llama import NeuronLlamaLTModule
+from llama_lightning_module import NeuronLlamaLTModule
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 from training_utils import (

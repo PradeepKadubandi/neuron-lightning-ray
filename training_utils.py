@@ -15,7 +15,7 @@ from torch.utils.data.dataloader import DataLoader
 from transformers import default_data_collator, set_seed
 
 try:
-    from lr import CosineAnnealing
+    from lr_scheduler import CosineAnnealing
 except ImportError:
     CosineAnnealing = None
 

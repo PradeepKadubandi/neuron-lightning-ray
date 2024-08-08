@@ -4,7 +4,7 @@ import numpy as np
 import torch
 import torch.distributed as dist
 import torch_xla.core.xla_model as xm
-from modeling_llama_nxd import LlamaForCausalLM
+from llama_nxd_model import LlamaForCausalLM
 from training_utils import Throughput, get_sin_cos_matrix
 from transformers import GenerationConfig
 
