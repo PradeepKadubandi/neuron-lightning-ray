@@ -32,6 +32,7 @@ from llama_nxd_model import (
 from llama_lightning_module import NeuronLlamaLTModule
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
+from ray_lt_neuron_xla_strategy import RayLightningNeuronXlaStrategy
 from training_utils import (
     create_llama_pretraining_dataset,
     get_learning_rate_scheduler,
@@ -62,6 +63,11 @@ import transformers.modeling_utils as modeling_utils
 if os.environ.get("XLA_USE_BF16") or os.environ.get("XLA_DOWNCAST_BF16"):
     modeling_utils.get_parameter_dtype = lambda x: torch.bfloat16
 
+# PK:Ray Changes start
+from ray.train.torch import TorchTrainer
+from ray.train import ScalingConfig
+from ray.train.torch.xla import TorchXLAConfig
+# PK:Ray Changes end
 
 def train_llama(args):
     print(f"Namespace: {args}")
@@ -181,7 +187,8 @@ def train_llama(args):
         data_args=(args.seed,),
     )
 
-    strategy = NeuronXLAStrategy(
+    strategy = RayLightningNeuronXlaStrategy(
+    # strategy = NeuronXLAStrategy(
         nxd_config=nxd_config,
         save_load_xser=args.save_load_xser,
     )
@@ -227,7 +234,18 @@ def train_llama(args):
 
 
 def _mp_fn(index, args):
-    train_llama(args)
+    # PK:Ray Changes start
+    scaling_config = ScalingConfig(num_workers=32, resources_per_worker={"neuron_cores": 1})
+    trainer = TorchTrainer(
+        train_loop_per_worker=lambda: train_llama(args),
+        # torch_config=TorchXLAConfig(),
+        scaling_config=scaling_config
+    )
+    result = trainer.fit()
+    print (f"Training finished with {result=}")
+    # Comment out the previous entry point call
+    # train_llama(args)
+    # PK:Ray Changes end
 
 
 if __name__ == "__main__":
@@ -391,6 +409,21 @@ if __name__ == "__main__":
         os.environ["XLA_DOWNCAST_BF16"] = "1"
     else:
         os.environ["XLA_USE_BF16"] = "1"
+
+    # Env variables copied from https://github.com/aws-neuron/neuronx-distributed/blob/main/examples/training/llama/tp_zero1_llama_hf_pretrain/tp_zero1_llama2_7B_hf_pretrain.sh
+    env_variables_to_set = {
+        "NEURON_CC_FLAGS": "--model-type transformer --distribution-strategy=llm-training --retry_failed_compilation",
+        "NEURON_FUSE_SOFTMAX": "1",
+        "NEURON_RT_ASYNC_EXEC_MAX_INFLIGHT_REQUESTS":"3",
+        "MALLOC_ARENA_MAX":"64",
+        "NUM_NEURONCORES":"32",
+        "NEURON_RT_NUM_CORES":"32",
+        "NUM_NEURONCORES":"32",
+        "TPU_NUM_DEVICES":"32",
+        "TPU_CHIPS_PER_HOST_BOUNDS":"32",
+    }
+    for name, value in env_variables_to_set.items():
+        os.environ[name] = value
 
     # WORLD_SIZE is set by torchrun
 
