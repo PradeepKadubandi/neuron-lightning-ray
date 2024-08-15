@@ -35,38 +35,30 @@ class RayLightningNeuronXlaStrategy(NeuronXLAStrategy):
         checkpoint_io: bool = None,
         save_load_xser: bool = True,
     ):
-        cluster_environment = RayLightningEnvironment()
-        # The code below is copied as is from NeuronXLAStrategy and unneeded parts are commented out
-        # TODO: Refactor/update the NeuronXLAStrategy to properly accept a custom environment
-        # if os.environ.get("TORCHELASTIC_RUN_ID") is not None:
-        #     cluster_environment = TorchElasticEnvironment()
-        # else:
-        #     cluster_environment = XLAEnvironment()
-
-        super(XLAStrategy, self).__init__(
-            accelerator=NeuronXLAAccelerator(),
-            cluster_environment=cluster_environment,
+        super().__init__(
+            nxd_config=nxd_config,
+            tensor_parallel_size=tensor_parallel_size,
+            pipeline_parallel_size=pipeline_parallel_size,
             debug=debug,
+            sync_module_states=sync_module_states,
+            checkpoint_io=checkpoint_io,
+            save_load_xser=save_load_xser
         )
 
-        if not checkpoint_io:
-            self.checkpoint_io = NeuronCheckpointIO(save_load_xser=save_load_xser)
-        elif isinstance(checkpoint_io, NeuronCheckpointIO):
-            self.checkpoint_io = checkpoint_io
-        else:
-            raise NotImplementedError(f"NeuronXLAStrategy only supports NeuronCheckpointIO")
+    def setup_distributed(self) -> None:
+        print (f"RayNeuronXLAStrategy TRACE: Got call for setup_distributed, value of {self.parallel_devices=}!")
 
-        self.debug = debug
-        self._launched = False
-        self._sync_module_states = sync_module_states
+        super(NeuronXLAStrategy, self).setup_distributed()
+        # init model parallel if needed
+        if not model_parallel_is_initialized():
+            initialize_model_parallel(
+                tensor_model_parallel_size=self.tensor_parallel_size,
+                pipeline_model_parallel_size=self.pipeline_parallel_size,
+            )
 
-        self.nxd_config = nxd_config
-
-        if self.nxd_config is not None:
-            self.tensor_parallel_size = self.nxd_config["tensor_parallel_size"]
-            self.pipeline_parallel_size = self.nxd_config["pipeline_parallel_size"]
-        else:
-            self.tensor_parallel_size = tensor_parallel_size
-            self.pipeline_parallel_size = pipeline_parallel_size
+        self.data_parallel_rank = get_data_parallel_rank()
+        self.data_parallel_size = get_data_parallel_size()
+        self.tensor_parallel_rank = get_tensor_model_parallel_rank()
+        self.pipeline_parallel_rank = get_pipeline_model_parallel_rank()
         
         

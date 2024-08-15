@@ -67,9 +67,29 @@ if os.environ.get("XLA_USE_BF16") or os.environ.get("XLA_DOWNCAST_BF16"):
 from ray.train.torch import TorchTrainer
 from ray.train import ScalingConfig
 from ray.train.torch.xla import TorchXLAConfig
+
+def setup_env_vars():
+    cores_to_use = "32"
+    # Env variables copied from https://github.com/aws-neuron/neuronx-distributed/blob/main/examples/training/llama/tp_zero1_llama_hf_pretrain/tp_zero1_llama2_7B_hf_pretrain.sh
+    env_variables_to_set = {
+        "NEURON_CC_FLAGS": "--model-type transformer --distribution-strategy=llm-training --retry_failed_compilation",
+        "NEURON_FUSE_SOFTMAX": "1",
+        "NEURON_RT_ASYNC_EXEC_MAX_INFLIGHT_REQUESTS":"3",
+        "MALLOC_ARENA_MAX":"64",
+        "NUM_NEURONCORES":cores_to_use,
+        "NEURON_RT_NUM_CORES":cores_to_use,
+        "NUM_NEURONCORES":cores_to_use,
+        "TPU_NUM_DEVICES":cores_to_use,
+        "TPU_CHIPS_PER_HOST_BOUNDS":cores_to_use,
+    }
+    for name, value in env_variables_to_set.items():
+        os.environ[name] = value
 # PK:Ray Changes end
 
 def train_llama(args):
+    print (f"train_llama.Trace: Before, {os.environ.get('TPU_NUM_DEVICES')=}")
+    setup_env_vars()
+    print (f"train_llama.Trace: After, {os.environ.get('TPU_NUM_DEVICES')=}")
     print(f"Namespace: {args}")
     set_seed(args.seed)
 
@@ -238,7 +258,7 @@ def _mp_fn(index, args):
     scaling_config = ScalingConfig(num_workers=32, resources_per_worker={"neuron_cores": 1})
     trainer = TorchTrainer(
         train_loop_per_worker=lambda: train_llama(args),
-        # torch_config=TorchXLAConfig(),
+        torch_config=TorchXLAConfig(),
         scaling_config=scaling_config
     )
     result = trainer.fit()
@@ -399,7 +419,12 @@ if __name__ == "__main__":
         help="Use gpu compatible precision",
     )
 
-    args = parser.parse_args(sys.argv[1:])
+    # Hack to make VS Code debugging work
+    command_line_args = sys.argv[1:]
+    if len(command_line_args) == 1 and isinstance(command_line_args[0], str) and command_line_args[0].find(" ") > -1:
+        command_line_args = command_line_args[0].split(" ")
+
+    args = parser.parse_args(command_line_args)
 
     if args.steps_this_run < 0:
         args.steps_this_run = args.max_steps
@@ -410,21 +435,7 @@ if __name__ == "__main__":
     else:
         os.environ["XLA_USE_BF16"] = "1"
 
-    # Env variables copied from https://github.com/aws-neuron/neuronx-distributed/blob/main/examples/training/llama/tp_zero1_llama_hf_pretrain/tp_zero1_llama2_7B_hf_pretrain.sh
-    env_variables_to_set = {
-        "NEURON_CC_FLAGS": "--model-type transformer --distribution-strategy=llm-training --retry_failed_compilation",
-        "NEURON_FUSE_SOFTMAX": "1",
-        "NEURON_RT_ASYNC_EXEC_MAX_INFLIGHT_REQUESTS":"3",
-        "MALLOC_ARENA_MAX":"64",
-        "NUM_NEURONCORES":"32",
-        "NEURON_RT_NUM_CORES":"32",
-        "NUM_NEURONCORES":"32",
-        "TPU_NUM_DEVICES":"32",
-        "TPU_CHIPS_PER_HOST_BOUNDS":"32",
-    }
-    for name, value in env_variables_to_set.items():
-        os.environ[name] = value
-
+    setup_env_vars()
     # WORLD_SIZE is set by torchrun
 
     _mp_fn(0, args)
