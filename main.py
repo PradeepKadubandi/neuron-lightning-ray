@@ -427,11 +427,7 @@ if __name__ == "__main__":
         help="Use gpu compatible precision",
     )
 
-    # Hack to make VS Code debugging work
     command_line_args = sys.argv[1:]
-    if len(command_line_args) == 1 and isinstance(command_line_args[0], str) and command_line_args[0].find(" ") > -1:
-        command_line_args = command_line_args[0].split(" ")
-
     args = parser.parse_args(command_line_args)
 
     if args.steps_this_run < 0:
