@@ -1,10 +1,10 @@
 # Launch with torchrun (not use Ray Train but use PT Lightning + Neuron) - replace model_path and data_dir appropriately.
 # This needs to be done inside torch 2_1 environment created by DLAMI
-torchrun --nproc_per_node 32 main.py --model_path /home/ubuntu/neuron-lightning-ray/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0 |& tee train8_add_ray_attempt4_remove_xm_master_print_call.log
+torchrun --nproc_per_node 32 main.py --model_path /home/ubuntu/neuron-lightning-ray/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0 |& tee torchrun_train.log
 
 
 # Just call the script directly (Ray Train) - replace model_path and data_dir appropriately.
 # This needs to be done inside torch 1_3 environment created by DLAMI. I couldn't get this working in torch 2_1 environment (even with some known fixes to Ray's TorchXLAConfig class)
-python main.py --model_path /home/ubuntu/neuron-lightning-ray/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0 |& tee train8_add_ray_attempt4_remove_xm_master_print_call.log
+python main.py --model_path /home/ubuntu/neuron-lightning-ray/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0 |& tee ray_train.log
 
 
