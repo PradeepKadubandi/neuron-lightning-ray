@@ -24,35 +24,35 @@ class NeuronLlamaLTModule(NeuronLTModule):
         self.validation_step_outputs = []
         self.use_deferred_init = use_deferred_init
 
-    def setup(self, stage=None):
-        def get_model(model_config):
-            # For delayed parameter inititalization
-            # Check https://pytorch.org/torchdistx/latest/deferred_init.html
-            try:
-                from torchdistx import deferred_init
-            except ImportError:
-                deferred_init = None
-            if self.use_deferred_init > 0 and deferred_init is not None:
-                model = deferred_init.deferred_init(LlamaForCausalLM, model_config)
-            else:
-                model = LlamaForCausalLM(model_config)
-            # Here we make sure we use the same sine and cosine matrices for all layers.
-            # Making use of same tensors would make the CSE algorithm eliminate the lookup call
-            # from layers, keeping only lookup from first layer.
-            with torch.no_grad():
-                cos, sin = get_sin_cos_matrix(model_config)
-                for layer in model.model.layers:
-                    layer.self_attn.rotary_emb.cos_cached = cos
-                    layer.self_attn.rotary_emb.sin_cached = sin
-            num_params = sum([np.prod(p.size()) for p in model.parameters()])
-            if dist.get_rank() == 0:
-                print(f"# total parameters: {num_params}")
-                print(f"model config {model_config}")
-            return model
+    def build_model(self, model_config):
+        # For delayed parameter inititalization
+        # Check https://pytorch.org/torchdistx/latest/deferred_init.html
+        try:
+            from torchdistx import deferred_init
+        except ImportError:
+            deferred_init = None
+        if self.use_deferred_init > 0 and deferred_init is not None:
+            model = deferred_init.deferred_init(LlamaForCausalLM, model_config)
+        else:
+            model = LlamaForCausalLM(model_config)
+        # Here we make sure we use the same sine and cosine matrices for all layers.
+        # Making use of same tensors would make the CSE algorithm eliminate the lookup call
+        # from layers, keeping only lookup from first layer.
+        with torch.no_grad():
+            cos, sin = get_sin_cos_matrix(model_config)
+            for layer in model.model.layers:
+                layer.self_attn.rotary_emb.cos_cached = cos
+                layer.self_attn.rotary_emb.sin_cached = sin
+        num_params = sum([np.prod(p.size()) for p in model.parameters()])
+        if dist.get_rank() == 0:
+            print(f"# total parameters: {num_params}")
+            print(f"model config {model_config}")
+        return model
 
+    def setup(self, stage=None):
         self.model = initialize_parallel_model(
             self.nxd_config,
-            get_model,
+            self.build_model,
             *self.model_args,
             **self.model_kwargs,
         )

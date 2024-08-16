@@ -20,6 +20,7 @@ import os
 import sys
 
 import torch
+import torch.distributed as dist
 import torch_xla.core.xla_model as xm
 from lightning_data_module import NeuronLightningDataModule
 from llama_nxd_model import (
@@ -87,9 +88,8 @@ def setup_env_vars():
 # PK:Ray Changes end
 
 def train_llama(args):
-    print (f"train_llama.Trace: Before, {os.environ.get('TPU_NUM_DEVICES')=}")
     setup_env_vars()
-    print (f"train_llama.Trace: After, {os.environ.get('TPU_NUM_DEVICES')=}")
+
     print(f"Namespace: {args}")
     set_seed(args.seed)
 
@@ -207,8 +207,8 @@ def train_llama(args):
         data_args=(args.seed,),
     )
 
-    strategy = RayLightningNeuronXlaStrategy(
-    # strategy = NeuronXLAStrategy(
+    strategy_cls = RayLightningNeuronXlaStrategy if args.use_ray else NeuronXLAStrategy
+    strategy = strategy_cls(
         nxd_config=nxd_config,
         save_load_xser=args.save_load_xser,
     )
@@ -255,16 +255,24 @@ def train_llama(args):
 
 def _mp_fn(index, args):
     # PK:Ray Changes start
-    scaling_config = ScalingConfig(num_workers=32, resources_per_worker={"neuron_cores": 1})
-    trainer = TorchTrainer(
-        train_loop_per_worker=lambda: train_llama(args),
-        torch_config=TorchXLAConfig(),
-        scaling_config=scaling_config
-    )
-    result = trainer.fit()
-    print (f"Training finished with {result=}")
-    # Comment out the previous entry point call
-    # train_llama(args)
+    print (f"_mp_fn.Trace: {dist.is_torchelastic_launched()=}")
+    print (f"_mp_fn.Trace: {os.environ.get('WORLD_SIZE')=}")
+
+    setup_env_vars()
+
+    if not dist.is_torchelastic_launched():
+        scaling_config = ScalingConfig(num_workers=32, resources_per_worker={"neuron_cores": 1})
+        args.use_ray = True
+        trainer = TorchTrainer(
+            train_loop_per_worker=lambda: train_llama(args),
+            torch_config=TorchXLAConfig(),
+            scaling_config=scaling_config
+        )
+        result = trainer.fit()
+        print (f"Training finished with {result=}")
+    else:
+        args.use_ray = False
+        train_llama(args)
     # PK:Ray Changes end
 
 
@@ -435,7 +443,6 @@ if __name__ == "__main__":
     else:
         os.environ["XLA_USE_BF16"] = "1"
 
-    setup_env_vars()
     # WORLD_SIZE is set by torchrun
 
     _mp_fn(0, args)
