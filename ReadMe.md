@@ -30,12 +30,18 @@ pip install -r requirements.txt
 ## Using a docker container (PTL on Trainium only)
 - Build a docker container, replace ```<name>``` and ```<tag>``` to a consistent value in all the commands below.
 ```
-docker build . -f Dockerfile -t <name>:<tag>
+cd neuron-lightning-ray && docker build . -f Dockerfile -t <name>:<tag>
 ```
 
 - Run the command from the docker container (use same ```<name>``` and ```<tag>``` from the above) to run PTL on Trainium cores
 ```
 docker run --device=/dev/neuron0 --device=/dev/neuron1 --device=/dev/neuron2 --device=/dev/neuron3 --device=/dev/neuron4 --device=/dev/neuron5 --device=/dev/neuron6 --device=/dev/neuron7 --device=/dev/neuron8 --device=/dev/neuron9 --device=/dev/neuron10 --device=/dev/neuron11 --device=/dev/neuron12 --device=/dev/neuron13 --device=/dev/neuron14 --device=/dev/neuron15 -v /home/ubuntu/examples_datasets:/examples_datasets -itd <name>:<tag> torchrun --nproc_per_node 32 main.py --model_path /neuron-lightning-ray/config.json --data_dir /examples_datasets/wikicorpus_llama2_tokenized_4k --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0
+```
+
+- If you would like to see the output of the above command, you can do these 2 steps:
+```
+docker ps # get the container id from this command
+docker logs <container_id> -f # this will show the output
 ```
 
 - You can run ```neuron-top``` from a terminal on the host instance and see the memeory and utilization of accelerator cores.
