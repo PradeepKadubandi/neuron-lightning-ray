@@ -1,290 +1,0 @@
-2024-08-15 18:23:07,965	INFO worker.py:1772 -- Started a local Ray instance. View the dashboard at [1m[32m127.0.0.1:8265 [39m[22m
-2024-08-15 18:23:09,467	INFO tune.py:253 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `<FrameworkTrainer>(...)`.
-[36m(TorchTrainer pid=137993)[0m Started distributed worker processes: 
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142246) world_rank=0, local_rank=0, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142247) world_rank=1, local_rank=1, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142249) world_rank=2, local_rank=2, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142251) world_rank=3, local_rank=3, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142253) world_rank=4, local_rank=4, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142255) world_rank=5, local_rank=5, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142258) world_rank=6, local_rank=6, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142259) world_rank=7, local_rank=7, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142260) world_rank=8, local_rank=8, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142263) world_rank=9, local_rank=9, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142267) world_rank=10, local_rank=10, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142264) world_rank=11, local_rank=11, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142271) world_rank=12, local_rank=12, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142281) world_rank=13, local_rank=13, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142279) world_rank=14, local_rank=14, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142276) world_rank=15, local_rank=15, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142283) world_rank=16, local_rank=16, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142286) world_rank=17, local_rank=17, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142287) world_rank=18, local_rank=18, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142289) world_rank=19, local_rank=19, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142293) world_rank=20, local_rank=20, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142294) world_rank=21, local_rank=21, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142297) world_rank=22, local_rank=22, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142296) world_rank=23, local_rank=23, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142295) world_rank=24, local_rank=24, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142300) world_rank=25, local_rank=25, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142301) world_rank=26, local_rank=26, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142304) world_rank=27, local_rank=27, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142306) world_rank=28, local_rank=28, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142307) world_rank=29, local_rank=29, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142308) world_rank=30, local_rank=30, node_rank=0
-[36m(TorchTrainer pid=137993)[0m - (node_id=4e902d4e4d39af0f2a6b27f55a3ecbdae328ad3d9769cc1895170c09, ip=172.31.40.167, pid=142309) world_rank=31, local_rank=31, node_rank=0
-
-View detailed results here: /home/ubuntu/ray_results/TorchTrainer_2024-08-15_18-23-06
-To visualize your results with TensorBoard, run: `tensorboard --logdir /tmp/ray/session_2024-08-15_18-23-06_321489_130192/artifacts/2024-08-15_18-23-09/TorchTrainer_2024-08-15_18-23-06/driver_artifacts`
-
-Training started without custom configuration.
-[36m(RayTrainWorker pid=142247)[0m train_llama.Trace: Before, os.environ.get('TPU_NUM_DEVICES')=None
-[36m(RayTrainWorker pid=142247)[0m train_llama.Trace: After, os.environ.get('TPU_NUM_DEVICES')='32'
-[36m(RayTrainWorker pid=142247)[0m Namespace: Namespace(model_path='/home/ubuntu/neuron-lightning-ray/config.json', data_dir='/home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k', train_batch_size=1, max_steps=5, steps_this_run=5, seed=12349, lr=0.0003, warmup_steps=1, constant_steps=None, min_lr=None, scheduler_type='linear', grad_accum_usteps=4, weight_decay=0.01, beta1=0.9, beta2=0.999, load_step=0, load_epoch=0, tb_dir='', save_checkpoint=False, num_kept_checkpoint=10000, pretrained_weight=None, checkpoint_freq=100000, checkpoint_dir=None, resume_ckpt=False, save_load_xser=False, tensor_parallel_size=32, pipeline_parallel_size=1, num_microbatches=8, seq_len=4096, trace_file_path=None, use_fp32_optimizer=0, use_zero1_optimizer=1, use_deferred_init=0, use_meta_device_init=0, deallocate_pipeline_outputs=1, logging_interval=1, log_rank0=0, num_layers=-1, hidden_size=-1, use_sequence_parallel=0, use_selective_checkpoint=1, qkv_linear=0, kv_replicator=1, use_flash_attention=0, use_gpu_compatible_precision=0)
-[36m(RayTrainWorker pid=142246)[0m train_llama.Trace: Before, os.environ.get('TPU_NUM_DEVICES')='32'
-[36m(RayTrainWorker pid=142246)[0m LlamaConfig {
-[36m(RayTrainWorker pid=142246)[0m   "architectures": [
-[36m(RayTrainWorker pid=142246)[0m     "LlamaForCausalLM"
-[36m(RayTrainWorker pid=142246)[0m   ],
-[36m(RayTrainWorker pid=142246)[0m   "bos_token_id": 1,
-[36m(RayTrainWorker pid=142246)[0m   "eos_token_id": 2,
-[36m(RayTrainWorker pid=142246)[0m   "hidden_act": "silu",
-[36m(RayTrainWorker pid=142246)[0m   "hidden_size": 4096,
-[36m(RayTrainWorker pid=142246)[0m   "initializer_range": 0.02,
-[36m(RayTrainWorker pid=142246)[0m   "intermediate_size": 11008,
-[36m(RayTrainWorker pid=142246)[0m   "kv_shared_group_size": 1,
-[36m(RayTrainWorker pid=142246)[0m   "max_position_embeddings": 4096,
-[36m(RayTrainWorker pid=142246)[0m   "model_type": "llama",
-[36m(RayTrainWorker pid=142246)[0m   "move_model_to_device": true,
-[36m(RayTrainWorker pid=142246)[0m   "num_attention_heads": 32,
-[36m(RayTrainWorker pid=142246)[0m   "num_hidden_layers": 32,
-[36m(RayTrainWorker pid=142246)[0m   "num_key_value_heads": 32,
-[36m(RayTrainWorker pid=142246)[0m   "pad_token_id": 0,
-[36m(RayTrainWorker pid=142246)[0m   "pretraining_tp": 1,
-[36m(RayTrainWorker pid=142246)[0m   "qkv_linear": 0,
-[36m(RayTrainWorker pid=142246)[0m   "rms_norm_eps": 1e-05,
-[36m(RayTrainWorker pid=142246)[0m   "rope_scaling": null,
-[36m(RayTrainWorker pid=142246)[0m   "rope_theta": 10000.0,
-[36m(RayTrainWorker pid=142246)[0m   "selective_checkpoint_enabled": true,
-[36m(RayTrainWorker pid=142246)[0m   "sequence_parallel_enabled": false,
-[36m(RayTrainWorker pid=142246)[0m   "tie_word_embeddings": false,
-[36m(RayTrainWorker pid=142246)[0m   "torch_dtype": "float16",
-[36m(RayTrainWorker pid=142246)[0m   "transformers_version": "4.31.0",
-[36m(RayTrainWorker pid=142246)[0m   "use_cache": false,
-[36m(RayTrainWorker pid=142246)[0m   "use_flash_attention": false,
-[36m(RayTrainWorker pid=142246)[0m   "vocab_size": 32000
-[36m(RayTrainWorker pid=142246)[0m }
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m > initializing tensor model parallel with size 32
-[36m(RayTrainWorker pid=142246)[0m > initializing pipeline model parallel with size 1
-[36m(RayTrainWorker pid=142246)[0m > initializing data parallel with size 1
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:23:38.000601:  156490  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:23:38.000603:  156490  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/b046b048-c505-4980-95a6-134d4e6fe533/model.MODULE_2428458913780209334+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/b046b048-c505-4980-95a6-134d4e6fe533/model.MODULE_2428458913780209334+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142304)[0m train_llama.Trace: Before, os.environ.get('TPU_NUM_DEVICES')=None[32m [repeated 30x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
-[36m(RayTrainWorker pid=142304)[0m train_llama.Trace: After, os.environ.get('TPU_NUM_DEVICES')='32'[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142304)[0m Namespace: Namespace(model_path='/home/ubuntu/neuron-lightning-ray/config.json', data_dir='/home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k', train_batch_size=1, max_steps=5, steps_this_run=5, seed=12349, lr=0.0003, warmup_steps=1, constant_steps=None, min_lr=None, scheduler_type='linear', grad_accum_usteps=4, weight_decay=0.01, beta1=0.9, beta2=0.999, load_step=0, load_epoch=0, tb_dir='', save_checkpoint=False, num_kept_checkpoint=10000, pretrained_weight=None, checkpoint_freq=100000, checkpoint_dir=None, resume_ckpt=False, save_load_xser=False, tensor_parallel_size=32, pipeline_parallel_size=1, num_microbatches=8, seq_len=4096, trace_file_path=None, use_fp32_optimizer=0, use_zero1_optimizer=1, use_deferred_init=0, use_meta_device_init=0, deallocate_pipeline_outputs=1, logging_interval=1, log_rank0=0, num_layers=-1, hidden_size=-1, use_sequence_parallel=0, use_selective_checkpoint=1, qkv_linear=0, kv_replicator=1, use_flash_attention=0, use_gpu_compatible_precision=0)[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142247)[0m RayNeuronXLAStrategy TRACE: Got call for setup_distributed, value of self.parallel_devices=[device(type='xla', index=1), device(type='xla', index=2), device(type='xla', index=3), device(type='xla', index=4), device(type='xla', index=5), device(type='xla', index=6), device(type='xla', index=7), device(type='xla', index=8), device(type='xla', index=9), device(type='xla', index=10), device(type='xla', index=11), device(type='xla', index=12), device(type='xla', index=13), device(type='xla', index=14), device(type='xla', index=15), device(type='xla', index=16), device(type='xla', index=17), device(type='xla', index=18), device(type='xla', index=19), device(type='xla', index=20), device(type='xla', index=21), device(type='xla', index=22), device(type='xla', index=23), device(type='xla', index=24), device(type='xla', index=25), device(type='xla', index=26), device(type='xla', index=27), device(type='xla', index=28), device(type='xla', index=29), device(type='xla', index=30), device(type='xla', index=31), device(type='xla', index=32)]!
-[36m(RayTrainWorker pid=142246)[0m 2024-Aug-15 18:23:41.0752 145646:156353 [24] nccl_net_ofi_init:1415 CCOM WARN NET/OFI aws-ofi-nccl initialization failed
-[36m(RayTrainWorker pid=142246)[0m 2024-Aug-15 18:23:41.0756 145646:156353 [24] init.cc:149 CCOM WARN OFI plugin initNet() failed is EFA enabled?
-[36m(RayTrainWorker pid=142246)[0m [2024-08-15 18:23:41.793: I neuronx_distributed/trainer/trainer.py:130] NxD config: 
-[36m(RayTrainWorker pid=142246)[0m {'activation_checkpoint_config': <class 'llama_nxd_model.CoreAttention'>,
-[36m(RayTrainWorker pid=142246)[0m  'lora_config': None,
-[36m(RayTrainWorker pid=142246)[0m  'mixed_precision_config': {'use_fp32_grad_acc': False,
-[36m(RayTrainWorker pid=142247)[0m INFO:pytorch_lightning.utilities.rank_zero:GPU available: False, used: False
-[36m(RayTrainWorker pid=142247)[0m INFO:pytorch_lightning.utilities.rank_zero:TPU available: True, using: 32 TPU cores
-[36m(RayTrainWorker pid=142247)[0m INFO:pytorch_lightning.utilities.rank_zero:IPU available: False, using: 0 IPUs
-[36m(RayTrainWorker pid=142247)[0m INFO:pytorch_lightning.utilities.rank_zero:HPU available: False, using: 0 HPUs
-[36m(RayTrainWorker pid=142247)[0m WARNING:pytorch_lightning.loggers.tensorboard:Missing logger folder: lightning_logs
-[36m(RayTrainWorker pid=142260)[0m WARNING:root:Not saving master weights may have accuracy issues when resuming training!
-[36m(RayTrainWorker pid=142286)[0m INFO:pytorch_lightning.utilities.rank_zero:GPU available: False, used: False[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142286)[0m INFO:pytorch_lightning.utilities.rank_zero:TPU available: True, using: 32 TPU cores[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142286)[0m INFO:pytorch_lightning.utilities.rank_zero:IPU available: False, using: 0 IPUs[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142286)[0m INFO:pytorch_lightning.utilities.rank_zero:HPU available: False, using: 0 HPUs[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142286)[0m WARNING:pytorch_lightning.loggers.tensorboard:Missing logger folder: lightning_logs[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142246)[0m INFO:pytorch_lightning.callbacks.model_summary:
-[36m(RayTrainWorker pid=142246)[0m   | Name  | Type     | Params
-[36m(RayTrainWorker pid=142246)[0m -----------------------------------
-[36m(RayTrainWorker pid=142246)[0m 0 | model | NxDModel | 210 M 
-[36m(RayTrainWorker pid=142246)[0m -----------------------------------
-[36m(RayTrainWorker pid=142246)[0m 210 M     Trainable params
-[36m(RayTrainWorker pid=142246)[0m 0         Non-trainable params
-[36m(RayTrainWorker pid=142246)[0m 210 M     Total params
-[36m(RayTrainWorker pid=142246)[0m 843.334   Total estimated model params size (MB)
-[36m(RayTrainWorker pid=142304)[0m WARNING:root:Not saving master weights may have accuracy issues when resuming training![32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142246)[0m                             'use_master_weights': False,
-[36m(RayTrainWorker pid=142246)[0m                             'use_master_weights_in_ckpt': False},
-[36m(RayTrainWorker pid=142246)[0m  'model_init_config': {'meta_device_init': False,
-[36m(RayTrainWorker pid=142246)[0m                        'param_init_fn': None,
-[36m(RayTrainWorker pid=142246)[0m                        'sequential_move_factor': 11},
-[36m(RayTrainWorker pid=142246)[0m  'optimizer_config': {'grad_clipping': True,
-[36m(RayTrainWorker pid=142246)[0m                       'max_grad_norm': 1.0,
-[36m(RayTrainWorker pid=142246)[0m                       'zero_one_enabled': True},
-[36m(RayTrainWorker pid=142246)[0m  'pad_model': False,
-[36m(RayTrainWorker pid=142246)[0m  'pipeline_config': None,
-[36m(RayTrainWorker pid=142246)[0m  'pipeline_parallel_size': 1,
-[36m(RayTrainWorker pid=142246)[0m  'sequence_parallel': False,
-[36m(RayTrainWorker pid=142246)[0m  'tensor_parallel_size': 32}
-[36m(RayTrainWorker pid=142246)[0m # total parameters: 210833408
-[36m(RayTrainWorker pid=142246)[0m model config LlamaConfig {
-[36m(RayTrainWorker pid=142246)[0m   "architectures": [
-[36m(RayTrainWorker pid=142246)[0m     "LlamaForCausalLM"
-[36m(RayTrainWorker pid=142246)[0m   ],
-[36m(RayTrainWorker pid=142246)[0m   "bos_token_id": 1,
-[36m(RayTrainWorker pid=142246)[0m   "eos_token_id": 2,
-[36m(RayTrainWorker pid=142246)[0m   "hidden_act": "silu",
-[36m(RayTrainWorker pid=142246)[0m   "hidden_size": 4096,
-[36m(RayTrainWorker pid=142246)[0m   "initializer_range": 0.02,
-[36m(RayTrainWorker pid=142246)[0m   "intermediate_size": 11008,
-[36m(RayTrainWorker pid=142246)[0m   "kv_shared_group_size": 1,
-[36m(RayTrainWorker pid=142246)[0m   "max_position_embeddings": 4096,
-[36m(RayTrainWorker pid=142246)[0m   "model_type": "llama",
-[36m(RayTrainWorker pid=142246)[0m   "move_model_to_device": true,
-[36m(RayTrainWorker pid=142246)[0m   "num_attention_heads": 32,
-[36m(RayTrainWorker pid=142246)[0m   "num_hidden_layers": 32,
-[36m(RayTrainWorker pid=142246)[0m   "num_key_value_heads": 32,
-[36m(RayTrainWorker pid=142246)[0m   "pad_token_id": 0,
-[36m(RayTrainWorker pid=142246)[0m   "pretraining_tp": 1,
-[36m(RayTrainWorker pid=142246)[0m   "qkv_linear": 0,
-[36m(RayTrainWorker pid=142246)[0m   "rms_norm_eps": 1e-05,
-[36m(RayTrainWorker pid=142246)[0m   "rope_scaling": null,
-[36m(RayTrainWorker pid=142246)[0m   "rope_theta": 10000.0,
-[36m(RayTrainWorker pid=142246)[0m   "selective_checkpoint_enabled": true,
-[36m(RayTrainWorker pid=142246)[0m   "separate_qkv": false,
-[36m(RayTrainWorker pid=142246)[0m   "sequence_parallel_enabled": false,
-[36m(RayTrainWorker pid=142246)[0m   "tie_word_embeddings": false,
-[36m(RayTrainWorker pid=142246)[0m   "torch_dtype": "float16",
-[36m(RayTrainWorker pid=142246)[0m   "transformers_version": "4.31.0",
-[36m(RayTrainWorker pid=142246)[0m   "use_cache": false,
-[36m(RayTrainWorker pid=142246)[0m   "use_flash_attention": false,
-[36m(RayTrainWorker pid=142246)[0m   "vocab_size": 32000
-[36m(RayTrainWorker pid=142246)[0m }
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142283)[0m RayNeuronXLAStrategy TRACE: Got call for setup_distributed, value of self.parallel_devices=[device(type='xla', index=1), device(type='xla', index=2), device(type='xla', index=3), device(type='xla', index=4), device(type='xla', index=5), device(type='xla', index=6), device(type='xla', index=7), device(type='xla', index=8), device(type='xla', index=9), device(type='xla', index=10), device(type='xla', index=11), device(type='xla', index=12), device(type='xla', index=13), device(type='xla', index=14), device(type='xla', index=15), device(type='xla', index=16), device(type='xla', index=17), device(type='xla', index=18), device(type='xla', index=19), device(type='xla', index=20), device(type='xla', index=21), device(type='xla', index=22), device(type='xla', index=23), device(type='xla', index=24), device(type='xla', index=25), device(type='xla', index=26), device(type='xla', index=27), device(type='xla', index=28), device(type='xla', index=29), device(type='xla', index=30), device(type='xla', index=31), device(type='xla', index=32)]![32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142247)[0m Failed to import optimum-neuron dependency, generation will not work on Neuron.
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:29.000503:  170254  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:29.000504:  170254  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/eb85646c-8e47-40ab-87d5-78a52f3ff594/model.MODULE_1072452995836770080+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/eb85646c-8e47-40ab-87d5-78a52f3ff594/model.MODULE_1072452995836770080+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:40.000930:  185161  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:40.000932:  185161  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/6e1af944-761a-4ecc-9a3b-0cf2500a3b07/model.MODULE_15231011329123896582+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/6e1af944-761a-4ecc-9a3b-0cf2500a3b07/model.MODULE_15231011329123896582+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142304)[0m Failed to import optimum-neuron dependency, generation will not work on Neuron.[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:43.000653:  185427  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:43.000655:  185427  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/b6449d6f-f086-4ec0-b0f3-c2ad84f6d2d1/model.MODULE_7565587314078718433+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/b6449d6f-f086-4ec0-b0f3-c2ad84f6d2d1/model.MODULE_7565587314078718433+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:46.000042:  185990  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:46.000044:  185990  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/78360e86-b2a4-4acc-b1b0-859f24018f91/model.MODULE_310851798465585165+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/78360e86-b2a4-4acc-b1b0-859f24018f91/model.MODULE_310851798465585165+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m Training: |          | 0/? [00:00<?, ?it/s]Training:   0%|          | 0/238017 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/238017 [00:00<?, ?it/s] 
-[36m(RayTrainWorker pid=142300)[0m /opt/aws_neuronx_venv_pytorch_1_13/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:257: UserWarning: To get the last learning rate computed by the scheduler, please use `get_last_lr()`.
-[36m(RayTrainWorker pid=142300)[0m   warnings.warn("To get the last learning rate computed by the scheduler, "
-[36m(RayTrainWorker pid=142246)[0m /opt/aws_neuronx_venv_pytorch_1_13/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:211: You called `self.log('input_ids', ...)` in your `on_train_batch_end` but the value needs to be floating point. Converting it to torch.float32.
-[36m(RayTrainWorker pid=142246)[0m /opt/aws_neuronx_venv_pytorch_1_13/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:211: You called `self.log('global_step', ...)` in your `on_train_batch_end` but the value needs to be floating point. Converting it to torch.float32.
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:50.000430:  187534  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:50.000433:  187534  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/88f5ec07-c673-4aa5-b5f2-01a3272df22d/model.MODULE_5719338774083233913+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/88f5ec07-c673-4aa5-b5f2-01a3272df22d/model.MODULE_5719338774083233913+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:50.000475:  187536  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:50.000478:  187536  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/9f2923b2-f93b-4a6d-99af-372d4ee8281c/model.MODULE_15137899073060618075+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/9f2923b2-f93b-4a6d-99af-372d4ee8281c/model.MODULE_15137899073060618075+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:50.000511:  187538  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:24:50.000514:  187538  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/e645ee17-775c-4a02-b934-48817287e316/model.MODULE_2458210516700990752+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/e645ee17-775c-4a02-b934-48817287e316/model.MODULE_2458210516700990752+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m ..
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m ..
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m ..
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 1/238017 [00:51<3409:50:22,  0.02it/s]Epoch 0:   0%|          | 1/238017 [00:51<3409:51:49,  0.02it/s, v_num=0]
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:25:48.000165:  189996  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:25:48.000168:  189996  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/2f82c0ef-399b-44d2-93ca-d75643982e06/model.MODULE_10149684989959978206+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/2f82c0ef-399b-44d2-93ca-d75643982e06/model.MODULE_10149684989959978206+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:25:48.000186:  189998  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:25:48.000189:  189998  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/87fae0c7-3cd5-400b-9917-4b198f2efb75/model.MODULE_1173833015792326500+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/87fae0c7-3cd5-400b-9917-4b198f2efb75/model.MODULE_1173833015792326500+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:25:48.000312:  190001  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:25:48.000315:  190001  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/528575ed-3bc4-4d45-a98a-dac7e8760509/model.MODULE_18245273289312040655+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/528575ed-3bc4-4d45-a98a-dac7e8760509/model.MODULE_18245273289312040655+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m ..
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m ..
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 2/238017 [01:51<3678:33:46,  0.02it/s, v_num=0]Epoch 0:   0%|          | 2/238017 [01:51<3678:34:36,  0.02it/s, v_num=0]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 3/238017 [02:06<2779:29:57,  0.02it/s, v_num=0]Epoch 0:   0%|          | 3/238017 [02:06<2779:30:38,  0.02it/s, v_num=0]
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:26:54.000470:  192558  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:26:54.000474:  192558  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/2bd9dfb5-e1d8-4b16-b845-d74bcf75b109/model.MODULE_6184360588352357904+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/2bd9dfb5-e1d8-4b16-b845-d74bcf75b109/model.MODULE_6184360588352357904+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 4/238017 [03:26<3411:09:54,  0.02it/s, v_num=0]Epoch 0:   0%|          | 4/238017 [03:26<3411:10:10,  0.02it/s, v_num=0]
-[36m(RayTrainWorker pid=142246)[0m step 1 loss is 11.1875, lr is 0.0003, throughput 0.018423853528373727 seq/s,  input_ids 35748649, norm tensor([11.2500], device='xla:1'), global rank 0
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 5/238017 [03:28<2760:46:01,  0.02it/s, v_num=0]Epoch 0:   0%|          | 5/238017 [03:28<2760:47:03,  0.02it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 6/238017 [03:29<2303:11:29,  0.03it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]Epoch 0:   0%|          | 6/238017 [03:29<2303:12:23,  0.03it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 7/238017 [03:29<1976:26:26,  0.03it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]Epoch 0:   0%|          | 7/238017 [03:29<1976:27:23,  0.03it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]
-[36m(RayTrainWorker pid=142246)[0m /opt/aws_neuronx_venv_pytorch_1_13/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/result.py:429: It is recommended to use `self.log('global_step', ..., sync_dist=True)` when logging on epoch level in distributed setting to accumulate the metric across devices.
-[36m(RayTrainWorker pid=142246)[0m INFO:pytorch_lightning.utilities.rank_zero:`Trainer.fit` stopped: `max_steps=5` reached.
-[36m(RayTrainWorker pid=142281)[0m /opt/aws_neuronx_venv_pytorch_1_13/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:257: UserWarning: To get the last learning rate computed by the scheduler, please use `get_last_lr()`.[32m [repeated 31x across cluster][0m
-[36m(RayTrainWorker pid=142281)[0m   warnings.warn("To get the last learning rate computed by the scheduler, "[32m [repeated 31x across cluster][0m
-2024-08-15 18:30:46,362	INFO tune.py:1009 -- Wrote the latest version of all result files and experiment state to '/home/ubuntu/ray_results/TorchTrainer_2024-08-15_18-23-06' in 0.0027s.
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:28:18.000621:  200101  INFO ||NEURON_CACHE||: Compile cache path: /var/tmp/neuron-compile-cache
-[36m(RayTrainWorker pid=142246)[0m 2024-08-15 18:28:18.000624:  200101  INFO ||NEURON_CC_WRAPPER||: Call compiler with cmd: ['neuronx-cc', '--target=trn1', 'compile', '--framework', 'XLA', '/tmp/ubuntu/neuroncc_compile_workdir/f0b964d5-a447-4c71-84a6-cff8be7ca64f/model.MODULE_11479031436158878097+5d2d81ce.hlo.pb', '--output', '/tmp/ubuntu/neuroncc_compile_workdir/f0b964d5-a447-4c71-84a6-cff8be7ca64f/model.MODULE_11479031436158878097+5d2d81ce.neff', '--model-type', 'transformer', '--distribution-strategy=llm-training', '--verbose=35']
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m .
-[36m(RayTrainWorker pid=142246)[0m 
-[36m(RayTrainWorker pid=142246)[0m Compiler status PASS
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 8/238017 [05:47<2874:15:08,  0.02it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]Epoch 0:   0%|          | 8/238017 [05:47<2874:15:43,  0.02it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]
-[36m(RayTrainWorker pid=142246)[0m step 2 loss is 11.1875, lr is 0.000225, throughput 0.02231370222862131 seq/s,  input_ids 50496752, norm tensor([11.9375], device='xla:1'), global rank 0
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 9/238017 [05:50<2573:17:35,  0.03it/s, v_num=0, loss=11.20, lr=0.0003, input_ids=3.57e+7, throughput=0.0184, global_step_step=1.000]Epoch 0:   0%|          | 9/238017 [05:50<2573:18:08,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 10/238017 [05:50<2318:08:12,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]Epoch 0:   0%|          | 10/238017 [05:50<2318:08:37,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 11/238017 [05:50<2108:46:28,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]Epoch 0:   0%|          | 11/238017 [05:50<2108:46:57,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 12/238017 [05:51<1934:57:58,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]Epoch 0:   0%|          | 12/238017 [05:51<1934:58:32,  0.03it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]
-[36m(RayTrainWorker pid=142246)[0m step 3 loss is 24.0, lr is 0.00015, throughput 0.033154417498816834 seq/s,  input_ids 44914365, norm tensor([129.], device='xla:1'), global rank 0
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 13/238017 [05:52<1792:35:52,  0.04it/s, v_num=0, loss=11.20, lr=0.000225, input_ids=5.05e+7, throughput=0.0223, global_step_step=2.000]Epoch 0:   0%|          | 13/238017 [05:52<1792:36:08,  0.04it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000] 
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 14/238017 [05:52<1665:44:49,  0.04it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]Epoch 0:   0%|          | 14/238017 [05:52<1665:45:16,  0.04it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 15/238017 [05:52<1555:35:50,  0.04it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]Epoch 0:   0%|          | 15/238017 [05:52<1555:36:11,  0.04it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 16/238017 [05:53<1459:45:11,  0.05it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]Epoch 0:   0%|          | 16/238017 [05:53<1459:45:45,  0.05it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]
-[36m(RayTrainWorker pid=142246)[0m step 4 loss is 17.375, lr is 7.5e-05, throughput 0.04395440485704618 seq/s,  input_ids 48932916, norm tensor([14.9375], device='xla:1'), global rank 0
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 17/238017 [05:54<1378:35:27,  0.05it/s, v_num=0, loss=24.00, lr=0.00015, input_ids=4.49e+7, throughput=0.0332, global_step_step=3.000]Epoch 0:   0%|          | 17/238017 [05:54<1378:35:51,  0.05it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]  
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 18/238017 [05:54<1302:48:49,  0.05it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]Epoch 0:   0%|          | 18/238017 [05:54<1302:49:04,  0.05it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 19/238017 [05:54<1235:02:09,  0.05it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]Epoch 0:   0%|          | 19/238017 [05:54<1235:02:25,  0.05it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 20/238017 [05:55<1174:22:27,  0.06it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]Epoch 0:   0%|          | 20/238017 [05:55<1174:22:46,  0.06it/s, v_num=0, loss=17.40, lr=7.5e-5, input_ids=4.89e+7, throughput=0.044, global_step_step=4.000]
-[36m(RayTrainWorker pid=142247)[0m Training finished!
-[36m(RayTrainWorker pid=142246)[0m step 5 loss is 18.625, lr is 0.0, throughput 0.05464377393543259 seq/s,  input_ids 38877673, norm tensor([66.], device='xla:1'), global rank 0
-[36m(RayTrainWorker pid=142246)[0m Epoch 0:   0%|          | 20/238017 [05:56<1177:53:34,  0.06it/s, v_num=0, loss=18.60, lr=0.000, input_ids=3.89e+7, throughput=0.0546, global_step_step=5.000, global_step_epoch=3.000]Epoch 0:   0%|          | 20/238017 [05:56<1177:53:47,  0.06it/s, v_num=0, loss=18.60, lr=0.000, input_ids=3.89e+7, throughput=0.0546, global_step_step=5.000, global_step_epoch=3.000]
-
-Training completed after 0 iterations at 2024-08-15 18:30:46. Total running time: 7min 36s
-
-Training finished with result=Result(
-  metrics={},
-  path='/home/ubuntu/ray_results/TorchTrainer_2024-08-15_18-23-06/TorchTrainer_6c923_00000_0_2024-08-15_18-23-09',
-  filesystem='local',
-  checkpoint=None
-)
-[36m(RayTrainWorker pid=142246)[0m Training finished![32m [repeated 31x across cluster][0m
