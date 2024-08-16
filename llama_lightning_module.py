@@ -25,6 +25,9 @@ class NeuronLlamaLTModule(NeuronLTModule):
         self.use_deferred_init = use_deferred_init
 
     def build_model(self, model_config):
+        '''
+        You can replace this with your code for building the pytorch model.
+        '''
         # For delayed parameter inititalization
         # Check https://pytorch.org/torchdistx/latest/deferred_init.html
         try:
