@@ -46,3 +46,21 @@ docker logs <container_id> -f # this will show the output
 
 - You can run ```neuron-top``` from a terminal on the host instance and see the memeory and utilization of accelerator cores.
 
+## BERT Examples
+
+- For PyTorch Lightning (PTL) only example run
+    ```
+    source /opt/aws_neuronx_venv_pytorch_2_1/bin/activate
+    export HF_TOKEN="<REPLACE_WITH_YOUR_HUGGINGFACE_TOKEN>"
+    cd neuron-lightning-ray 
+    torchrun --nproc_per_node=32 bert/bert-ptl.py
+    ```
+
+- For RayTrain with PTL example run
+    ```
+    source /opt/aws_neuronx_venv_pytorch_1_13/bin/activate
+    export HF_TOKEN="<REPLACE_WITH_YOUR_HUGGINGFACE_TOKEN>"
+    cd neuron-lightning-ray
+    python -m bert.bert-raytrain-ptl
+    ```
+
