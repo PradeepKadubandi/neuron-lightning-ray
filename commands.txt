@@ -1,7 +1,10 @@
 # Launch with torchrun (not use Ray Train but use PT Lightning + Neuron) - replace model_path and data_dir appropriately.
 # This needs to be done inside torch 2_1 environment created by DLAMI
-torchrun --nproc_per_node 32 main.py --model_path /home/ubuntu/neuron-lightning-ray/config/llama2_7B/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0 |& tee torchrun_train.log
+# Using Llama 2 model config
+torchrun --nproc_per_node 32 main.py --model_path /home/ubuntu/neuron-lightning-ray/config/llama2_7B/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama2_tokenized_4k/NousResearch/Llama-2-7b-hf --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 4096 --use_sequence_parallel 0 --use_selective_checkpoint 1 --use_fp32_optimizer 0 --use_zero1_optimizer 1 --scheduler_type 'linear' --use_flash_attention 0 |& tee torchrun_train.log
 
+# Using Llama 3.1 model config
+torchrun --nproc_per_node 32 main.py --model_path /home/ubuntu/neuron-lightning-ray/config/llama3.1_8B/config.json --data_dir /home/ubuntu/examples_datasets/wikicorpus_llama3.1_tokenized_8k/NousResearch/Meta-Llama-3.1-8B --tensor_parallel_size 32 --train_batch_size 1 --max_steps 100 --warmup_steps 5 --lr 3e-4 --grad_accum_usteps 4 --seq_len 8192 --use_selective_checkpoint 1 --logging_interval 1 --qkv_linear 1 --kv_replicator 4 --use_flash_attention 1 --scheduler_type 'linear'
 
 # Just call the script directly (Ray Train) - replace model_path and data_dir appropriately.
 # This needs to be done inside torch 1_3 environment created by DLAMI. I couldn't get this working in torch 2_1 environment (even with some known fixes to Ray's TorchXLAConfig class)

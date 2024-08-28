@@ -6,19 +6,20 @@ It also contains a hacky implementation to make Ray work with PTL on Trainium.
 - Get a single trn1.32xlarge AWS Trainium EC2 instance, use the Neuron DLAMI when creating the instance (refer to ```EC2-Instance-Screenshot.png``` if you are new to this).
 - Clone this repository (The commands below assume the repository is cloned in home directory at path /home/ubuntu. If a different path is used to clone, the commands need to be changed accordingly).
 
+## Dataset download and preprocessing - for Llama models.
+We are going to use ```wikicorpus``` English dataset for training the model. We will use a tokenizer to preprocess the dataset ready for training the model in this step. The command below downloads the dataset to a path and outputs at the end where the preprocessed dataset is saved. Make a note of that path as that should be used later to pass as the value for parameter ```data_dir``` when running the commands from ```commands.txt```
+### Llama 2.0
+```
+cd neuron-lightning-ray/data && python get_dataset.py --llama-version 2 --tokenizer NousResearch/Llama-2-7b-hf 
+```
+### Llama 3.1
+```
+cd neuron-lightning-ray/data && python get_dataset.py --llama-version 3.1 --tokenizer NousResearch/Meta-Llama-3.1-8B 
+```
 
-## LLama 2.0 Pre-requisites:
-- Download the dataset. The command below downloads the dataset to the path ```/home/ubuntu/examples_datasets/``` and further commands in this ReadMe assume that path for dataset. If the script is modified OR the data is placed in some other path, the commands need to be adjusted as appropriate.
-```
-cd neuron-lightning-ray/data && python get_dataset.py --llama-version 2
-```
-- Install the requirements
-```
-pip install -r requirements.txt
-Install neuronx-distributed: python -m pip install neuronx_distributed --extra-index-url https://pip.repos.neuron.amazonaws.com
-```
+For both the above steps, alternatively, you could get a licence approval for model/tokenizer by Meta and login with HF cli and use meta tokenizer to preprocess the dataset.
 
-## Llama 2.0: Running directly from the instance
+## Llama models: Running directly from the instance
 - Do either of the below:
   - For PTL only run (torchrun launch step in ```commands.txt```), source the pytorch 2 environment in terminal.
     ```
@@ -28,6 +29,11 @@ Install neuronx-distributed: python -m pip install neuronx_distributed --extra-i
     ```
     source /opt/aws_neuronx_venv_pytorch_1_13/bin/activate
     ```
+- Install the requirements
+```
+pip install -r requirements.txt --extra-index-url https://pip.repos.neuron.amazonaws.com 
+```
+
 - Run the relevant commands from ```commands.txt```
 
 ## Llama 2.0: Using a docker container (PTL on Trainium only)
@@ -56,9 +62,7 @@ docker logs <container_id> -f # this will show the output
     source /opt/aws_neuronx_venv_pytorch_2_1/bin/activate
     export HF_TOKEN="<REPLACE_WITH_YOUR_HUGGINGFACE_TOKEN>"
     cd neuron-lightning-ray 
-    pip install -r requirements.txt
-    Install neuronx-distributed: python -m pip install neuronx_distributed --extra-index-url https://pip.repos.neuron.amazonaws.com
-    Install accelerate: pip install accelerate
+    pip install -r requirements.txt --extra-index-url https://pip.repos.neuron.amazonaws.com
     torchrun --nproc_per_node=32 bert/bert-ptl.py
     ```
 
@@ -67,9 +71,7 @@ docker logs <container_id> -f # this will show the output
     source /opt/aws_neuronx_venv_pytorch_1_13/bin/activate
     export HF_TOKEN="<REPLACE_WITH_YOUR_HUGGINGFACE_TOKEN>"
     cd neuron-lightning-ray
-    pip install -r requirements.txt
-    Install neuronx-distributed: python -m pip install neuronx_distributed --extra-index-url https://pip.repos.neuron.amazonaws.com
-    Install accelerate: pip install accelerate
+    pip install -r requirements.txt --extra-index-url https://pip.repos.neuron.amazonaws.com
     python -m bert.bert-raytrain-ptl
     ```
 
