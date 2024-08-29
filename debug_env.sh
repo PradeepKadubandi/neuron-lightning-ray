@@ -1,0 +1,3 @@
+export RAY_DEDUP_LOGS=0
+export TF_CPP_MIN_LOG_LEVEL=0
+export TF_CPP_VMODULE=client=2

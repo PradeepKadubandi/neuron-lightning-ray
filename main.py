@@ -67,10 +67,11 @@ if os.environ.get("XLA_USE_BF16") or os.environ.get("XLA_DOWNCAST_BF16"):
 # PK:Ray Changes start
 from ray.train.torch import TorchTrainer
 from ray.train import ScalingConfig
-from ray.train.torch.xla import TorchXLAConfig
+# from ray.train.torch.xla import TorchXLAConfig
+from ray_neuron_xla_config_20 import NewTorchXLAConfig as TorchXLAConfig
 
-def setup_env_vars():
-    cores_to_use = "32"
+def setup_env_vars(cores):
+    cores_to_use = str(cores)
     # Env variables copied from https://github.com/aws-neuron/neuronx-distributed/blob/main/examples/training/llama/tp_zero1_llama_hf_pretrain/tp_zero1_llama2_7B_hf_pretrain.sh
     env_variables_to_set = {
         "NEURON_CC_FLAGS": "--model-type transformer --distribution-strategy=llm-training --retry_failed_compilation",
@@ -79,16 +80,17 @@ def setup_env_vars():
         "MALLOC_ARENA_MAX":"64",
         "NUM_NEURONCORES":cores_to_use,
         "NEURON_RT_NUM_CORES":cores_to_use,
-        "NUM_NEURONCORES":cores_to_use,
         "TPU_NUM_DEVICES":cores_to_use,
         "TPU_CHIPS_PER_HOST_BOUNDS":cores_to_use,
+        "NEURON_PJRT_WORLD_SIZE":cores_to_use,
+        "PJRT_LOCAL_PROCESS_COUNT": cores_to_use # TODO: Modify for multi-node
     }
     for name, value in env_variables_to_set.items():
         os.environ[name] = value
 # PK:Ray Changes end
 
 def train_llama(args):
-    setup_env_vars()
+    setup_env_vars(args.cores)
 
     print(f"Namespace: {args}")
     set_seed(args.seed)
@@ -255,13 +257,14 @@ def train_llama(args):
 
 def _mp_fn(index, args):
     # PK:Ray Changes start
-    print (f"_mp_fn.Trace: {dist.is_torchelastic_launched()=}")
-    print (f"_mp_fn.Trace: {os.environ.get('WORLD_SIZE')=}")
+    # print (f"_mp_fn.Trace: {dist.is_torchelastic_launched()=}")
+    # print (f"_mp_fn.Trace: {os.environ.get('WORLD_SIZE')=}")
 
-    setup_env_vars()
+    args.cores = 32 # TODO: Modify for multi-node
+    setup_env_vars(args.cores)
 
     if not dist.is_torchelastic_launched():
-        scaling_config = ScalingConfig(num_workers=32, resources_per_worker={"neuron_cores": 1})
+        scaling_config = ScalingConfig(num_workers=args.cores, resources_per_worker={"neuron_cores": 1})
         args.use_ray = True
         trainer = TorchTrainer(
             train_loop_per_worker=lambda: train_llama(args),
